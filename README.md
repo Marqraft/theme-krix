@@ -1,6 +1,6 @@
 # Krix
 
-The Kex documentation look for [Marqraft](https://github.com/kexhq/marqraft):
+The Kex documentation look for [Marqraft](https://github.com/Marqraft/cli):
 the warm honey/cream palette of kex.run, Fraunces / Plus Jakarta Sans /
 JetBrains Mono, a dark code surface with Kex syntax colouring, and the
 sidebar, crumbs and reading-order footer of docs.kex.run.
