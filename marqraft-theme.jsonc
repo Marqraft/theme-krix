@@ -1,0 +1,190 @@
+{
+  "name": "Krix",
+  "favicons": [
+    {
+      "file": "icon.png",
+      "type": "image/png",
+      "sizes": "403x403"
+    }
+  ],
+  "uploads": {
+    "images": "assets/images"
+  },
+  "menus": [
+    {
+      "id": "header",
+      "label": "Header",
+      "default": [
+        {
+          "label": "kex.run",
+          "url": "https://kex.run/docs"
+        }
+      ]
+    }
+  ],
+  "pageTemplates": [
+    {
+      "id": "page",
+      "label": "Page"
+    },
+    {
+      "id": "landing",
+      "label": "Collection"
+    }
+  ],
+  "settings": [
+    {
+      "name": "version",
+      "label": "Version",
+      "type": "text",
+      "default": "0.4.0-beta.2-dev"
+    },
+    {
+      "name": "brandSub",
+      "label": "Brand subtitle",
+      "type": "text",
+      "default": "docs"
+    },
+    {
+      "name": "homeLabel",
+      "label": "Home link label",
+      "type": "text",
+      "default": "kex.run"
+    },
+    {
+      "name": "homeUrl",
+      "label": "Home link URL",
+      "type": "text",
+      "default": "https://kex.run/docs"
+    },
+    {
+      "name": "accent",
+      "label": "Link accent",
+      "type": "color",
+      "default": "#8a4f0a"
+    },
+    {
+      "name": "contentWidth",
+      "label": "Content width",
+      "type": "number",
+      "unit": "rem",
+      "default": "48",
+      "min": 36,
+      "max": 72
+    },
+    {
+      "name": "logo",
+      "label": "Logo",
+      "type": "image",
+      "default": ""
+    }
+  ],
+  "blocks": [
+    {
+      "id": "code",
+      "element": "marqraft-code",
+      "label": "Code",
+      "body": "literal",
+      "settings": [
+        {
+          "name": "language",
+          "label": "Language",
+          "type": "enum",
+          "default": "kex",
+          "options": [
+            "kex",
+            "shell",
+            "text",
+            "json",
+            "html",
+            "css",
+            "javascript"
+          ]
+        },
+        {
+          "name": "filename",
+          "label": "Filename",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "name": "caption",
+          "label": "Caption",
+          "type": "text",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "id": "tabs",
+      "element": "marqraft-tabs",
+      "label": "Tabs",
+      "body": "areas",
+      "allowedChildren": [
+        "code",
+        "tabs"
+      ],
+      "settings": []
+    }
+  ],
+  "commands": [
+    {
+      "id": "code",
+      "label": "Kex code",
+      "aliases": [
+        "snippet",
+        "kex"
+      ],
+      "icon": "code",
+      "regions": [
+        "body",
+        "area"
+      ],
+      "kind": "insert",
+      "block": "code",
+      "override": true
+    },
+    {
+      "id": "tabs",
+      "label": "Tabs",
+      "aliases": [
+        "areas"
+      ],
+      "icon": "tabs",
+      "regions": [
+        "body",
+        "area"
+      ],
+      "kind": "insert",
+      "block": "tabs"
+    }
+  ],
+  "operations": [
+    {
+      "id": "create-page",
+      "label": "New page",
+      "kind": "createPage",
+      "template": "page"
+    },
+    {
+      "id": "upload-image",
+      "label": "Upload image",
+      "kind": "uploadAsset"
+    },
+    {
+      "id": "settings",
+      "label": "Theme settings",
+      "kind": "updateSettings"
+    },
+    {
+      "id": "navigation",
+      "label": "Navigation",
+      "kind": "updateNavigation"
+    },
+    {
+      "id": "menus",
+      "label": "Header links",
+      "kind": "updateMenus"
+    }
+  ]
+}

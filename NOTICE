@@ -1,0 +1,6 @@
+Krix includes the documentation stylesheet from Tey docgen
+(tey/src/tey/docgen/css.kex in https://github.com/kexhq/kex), used under the
+MIT license. That stylesheet ports design tokens from kex.run.
+
+assets/icon.png is the Kex icon published with the Kex documentation site
+(kexhq/docs, gh-pages branch).
