@@ -44,6 +44,17 @@ previous/next links follow the collection of the current page. In `marq dev`,
 adds a page to the current one. Collection order is changed from a
 collection's menu in the header; page order by dragging in the sidebar.
 
+## Reference pages
+
+`reference.html.ket` frames generated API documentation — Tey's
+`tey docs build --format fragments`, served by a Marqraft mount with
+`"format": "fragments"` and `"template": "reference"`. It
+adds an "On this page" rail from the page's `tocHtml` data and takes the
+version badge from the page's own `version`, so each reference release shows
+its own. `style.css` carries docgen's reference styles (kind badges,
+signatures, trait tags); keep them in step with
+`tey/src/tey/docgen/css.kex` in kexhq/kex.
+
 ## Header links
 
 After the version badge, the header carries ordinary links, starting with

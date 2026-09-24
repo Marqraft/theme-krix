@@ -30,6 +30,10 @@
     {
       "id": "landing",
       "label": "Collection"
+    },
+    {
+      "id": "reference",
+      "label": "Reference (generated)"
     }
   ],
   "settings": [
