@@ -3,47 +3,47 @@ params: [context: {String: Any}]
 ---
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title><%= context["title"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %> | kex docs</title>
-<meta name="description" content="<%= context["description"].or("") %>">
-<%== context["favicon"].or("") %>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Plus+Jakarta+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style><%== context["css"].or("") %></style>
-</head>
-<body>
-<header class="top">
-<div class="wrap top-inner">
-<a class="brand" href="/"><%== context["logo"].or("") %><%= context["siteTitle"].or("kex") %></a>
-<span class="brand-sub"><%= context["settings"].try["brandSub"].or("docs") %></span>
-<nav class="top-nav" aria-label="Collections"><marqraft-content source="navigation" scope="collections"></marqraft-content></nav>
-<span class="spacer"></span>
-<span class="pkg-badge"><%= context["collectionTitle"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %></span>
-<nav class="top-links" aria-label="Links"><marqraft-content source="menu" menu="header"></marqraft-content></nav>
-</div>
-</header>
-<div class="wrap layout">
-<aside class="side">
-<nav aria-label="<%= context["collectionTitle"].or("") %>">
-<p class="side-heading"><a href="<%= context["collectionPath"].or("/") %>"><%= context["collectionTitle"].or("") %></a></p>
-<div class="side-tree"><marqraft-content source="navigation" scope="collection"></marqraft-content></div>
-</nav>
-</aside>
-<main class="content">
-<article class="prose landing">
-<marqraft-content source="title"></marqraft-content>
-<p class="lede"><%= context["description"].or("") %></p>
-<marqraft-content source="body"></marqraft-content>
-<h2 class="group">Chapters</h2>
-<nav class="chapters" aria-label="Chapters"><marqraft-content source="navigation" scope="collection"></marqraft-content></nav>
-</article>
-</main>
-</div>
-<footer class="foot">
-<div class="wrap">Built with Marqraft · <a href="<%= context["settings"].try["homeUrl"].or("https://kex.run/docs") %>"><%= context["settings"].try["homeLabel"].or("kex.run") %></a></div>
-</footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= context["title"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %> | kex docs</title>
+    <meta name="description" content="<%= context["description"].or("") %>">
+    <%== context["favicon"].or("") %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Plus+Jakarta+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style><%== context["css"].or("") %></style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top-inner">
+        <a class="brand" href="/"><%== context["logo"].or("") %><%= context["siteTitle"].or("kex") %></a>
+        <span class="brand-sub"><%= context["settings"].try["brandSub"].or("docs") %></span>
+        <nav class="top-nav" aria-label="Collections"><marqraft-content source="navigation" scope="collections"></marqraft-content></nav>
+        <span class="spacer"></span>
+        <span class="pkg-badge"><%= context["collectionTitle"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %></span>
+        <nav class="top-links" aria-label="Links"><marqraft-content source="menu" menu="header"></marqraft-content></nav>
+      </div>
+    </header>
+    <div class="wrap layout">
+      <aside class="side">
+        <nav aria-label="<%= context["collectionTitle"].or("") %>">
+          <p class="side-heading"><a href="<%= context["collectionPath"].or("/") %>"><%= context["collectionTitle"].or("") %></a></p>
+          <div class="side-tree"><marqraft-content source="navigation" scope="collection"></marqraft-content></div>
+        </nav>
+      </aside>
+      <main class="content">
+        <article class="prose landing">
+          <marqraft-content source="title"></marqraft-content>
+          <p class="lede"><%= context["description"].or("") %></p>
+          <marqraft-content source="body"></marqraft-content>
+          <h2 class="group">Chapters</h2>
+          <nav class="chapters" aria-label="Chapters"><marqraft-content source="navigation" scope="collection"></marqraft-content></nav>
+        </article>
+      </main>
+    </div>
+    <footer class="foot">
+      <div class="wrap">Built with Marqraft · <a href="<%= context["settings"].try["homeUrl"].or("https://kex.run/docs") %>"><%= context["settings"].try["homeLabel"].or("kex.run") %></a></div>
+    </footer>
+  </body>
 </html>
