@@ -41,7 +41,7 @@ Tutorial       /tutorial/
 The header lists the collections; the sidebar, breadcrumbs, version badge and
 previous/next links follow the collection of the current page. The home page
 (`/`) belongs to no collection: give it the `home` template, which drops the
-sidebar and the chapter list and shows the site-wide version. In `marq dev`,
+sidebar and the chapter list. In `marq dev`,
 **+** in the header creates a collection, and **New page** in the sidebar
 adds a page to the current one. Collection order is changed from a
 collection's menu in the header; page order by dragging in the sidebar.
@@ -51,9 +51,7 @@ collection's menu in the header; page order by dragging in the sidebar.
 `reference.html.ket` frames generated API documentation — Tey's
 `tey docs build --format fragments`, served by a Marqraft mount with
 `"format": "fragments"` and `"template": "reference"`. It
-adds an "On this page" rail from the page's `tocHtml` data and takes the
-version badge from the page's own `version`, so each reference release shows
-its own. `style.css` carries docgen's reference styles (kind badges,
+adds an "On this page" rail from the page's `tocHtml` data. `style.css` carries docgen's reference styles (kind badges,
 signatures, trait tags); keep them in step with
 `tey/src/tey/docgen/css.kex` in kexhq/kex.
 
@@ -89,7 +87,6 @@ highlighted at build time; the published site carries no JavaScript.
 
 | name           | default                  | used for |
 |----------------|--------------------------|----------|
-| `version`      | `0.4.0-beta.2-dev`       | version badge and page titles |
 | `brandSub`     | `docs`                   | the small label after the site title |
 | `homeLabel`    | `kex.run`                | header and footer link text |
 | `homeUrl`      | `https://kex.run/docs`   | header and footer link |
@@ -115,12 +112,18 @@ The site title (`title` in `marqraft.jsonc`) is the brand, e.g. `kex`.
 
 ## Search and versions
 
-The header's search (`/` or ⌘K, `assets/search.js`) reads the site's own
-index (`"search"` in `marqraft.jsonc`, passed as `context["searchIndex"]`)
-and docgen's `search.json` for each package: the page's own version on a
-reference page, the newest one elsewhere. `versionsIndex` points at docgen's
-`versions.json` (mount it as a file), which also turns a reference page's
-version badge into a switcher once a package has more than one version.
+The version badge shows the collection and the version the page documents
+(`context["version"]`: the page's or its collection's `version:`
+frontmatter, or a reference page's mount version). Marqraft renders it
+through `<marqraft-content source="versions">`, which becomes a switcher
+between a reference's versions once there is more than one. Pages without a
+version, such as the home page, have no badge.
+
+The header's search (`/` or ⌘K, `assets/search.js`) reads one file, the
+site's index (`"search"` in `marqraft.jsonc`, passed as
+`context["searchIndex"]`). Give each reference mount `"search":
+"search.json"` and Marqraft merges docgen's entries for its newest version
+into that index.
 
 ## Files
 
@@ -132,7 +135,7 @@ page.html.ket            chapter layout
 landing.html.ket         guide index layout
 home.html.ket            home page layout: no collection sidebar
 reference.html.ket       generated reference layout
-assets/search.js         search and the version switcher
+assets/search.js         search
 starters/*.md            initial body of new pages
 ```
 
