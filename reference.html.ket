@@ -6,7 +6,7 @@ params: [context: {String: Any}]
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= context["title"].or("") %> | <%= context["collectionTitle"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %> | kex docs</title>
+    <title><%= context["title"].or("") %> | <%= context["collectionTitle"].or("") %><% if context["version"].or("") != "" %> <%= context["version"].or("") %><% end %> | <%= context["siteTitle"].or("kex") %> <%= context["settings"].try["brandSub"].or("docs") %></title>
     <meta name="description" content="<%= context["description"].or("") %>">
     <%== context["favicon"].or("") %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +22,8 @@ params: [context: {String: Any}]
         <span class="brand-sub"><%= context["settings"].try["brandSub"].or("docs") %></span>
         <nav class="top-nav" aria-label="Collections"><marqraft-content source="navigation" scope="collections"></marqraft-content></nav>
         <span class="spacer"></span>
-        <button class="search-trigger" id="search" type="button" aria-label="Search documentation" data-index="<%= context["searchIndex"].or("") %>" data-versions="<%= context["settings"].try["versionsIndex"].or("") %>" data-package="<%= context["page"].try["package"].or("") %>" data-version="<%= context["page"].try["version"].or("") %>"><span>Search</span><kbd>/</kbd></button>
-        <span class="pkg-badge"<% if context["page"].try["version"].or("") != "" %> id="version-badge" data-versions="<%= context["settings"].try["versionsIndex"].or("") %>" data-package="<%= context["page"].try["package"].or("") %>" data-version="<%= context["page"].try["version"].or("") %>"<% end %>><%= context["collectionTitle"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %></span>
+        <button class="search-trigger" id="search" type="button" aria-label="Search documentation" data-index="<%= context["searchIndex"].or("") %>"><span>Search</span><kbd>/</kbd></button>
+        <% if context["version"].or("") != "" %><span class="pkg-badge"><%= context["collectionTitle"].or("") %> <marqraft-content source="versions"></marqraft-content></span><% end %>
         <nav class="top-links" aria-label="Links"><marqraft-content source="menu" menu="header"></marqraft-content></nav>
       </div>
     </header>
@@ -47,7 +47,7 @@ params: [context: {String: Any}]
     </div>
     <footer class="foot">
       <% let path = "${context["path"].or("/")}" %>
-      <% let version = "${context["page"].try["version"].or("")}" %>
+      <% let version = "${context["version"].or("")}" %>
       <div class="wrap">Generated from source<% if context["page"].try["source"].or("") != "" %> (<code><%= context["page"].try["source"].or("") %></code>)<% end %> · Built with Marqraft · <% if version != "" %><a href="<%= context["collectionPath"].or("/") %><%= version %>/search.json">search.json</a> · <% end %><% if context["page"].try["source"].or("") != "" %><a href="<%= path.take(path.count - 1) + ".md" %>">Markdown</a> · <% end %><a href="<%= context["settings"].try["homeUrl"].or("https://kex.run/docs") %>"><%= context["settings"].try["homeLabel"].or("kex.run") %></a></div>
     </footer>
   </body>

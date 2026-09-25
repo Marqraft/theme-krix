@@ -42,18 +42,6 @@
   ],
   "settings": [
     {
-      "name": "version",
-      "label": "Version",
-      "type": "text",
-      "default": "0.4.0-beta.2-dev"
-    },
-    {
-      "name": "versionsIndex",
-      "label": "Versions index (docgen versions.json) for search and the version switcher",
-      "type": "text",
-      "default": "/versions.json"
-    },
-    {
       "name": "brandSub",
       "label": "Brand subtitle",
       "type": "text",
