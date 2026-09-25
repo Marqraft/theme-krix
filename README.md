@@ -113,11 +113,14 @@ The site title (`title` in `marqraft.jsonc`) is the brand, e.g. `kex`.
 
   Kinds: `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`.
 
-## Not yet
+## Search and versions
 
-docs.kex.run also has search and a version switcher, driven by docgen's
-`search.json` and `versions.json`. Those need site-level data Marqraft does not
-generate yet, so the header shows a static version badge.
+The header's search (`/` or ⌘K, `assets/search.js`) reads the site's own
+index (`"search"` in `marqraft.jsonc`, passed as `context["searchIndex"]`)
+and docgen's `search.json` for each package: the page's own version on a
+reference page, the newest one elsewhere. `versionsIndex` points at docgen's
+`versions.json` (mount it as a file), which also turns a reference page's
+version badge into a switcher once a package has more than one version.
 
 ## Files
 
@@ -127,6 +130,9 @@ marqraft-theme.jsonc     manifest: templates, settings, favicons, uploads, menus
 style.css                docgen's stylesheet, then Marqraft-specific rules
 page.html.ket            chapter layout
 landing.html.ket         guide index layout
+home.html.ket            home page layout: no collection sidebar
+reference.html.ket       generated reference layout
+assets/search.js         search and the version switcher
 starters/*.md            initial body of new pages
 ```
 
