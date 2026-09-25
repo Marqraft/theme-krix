@@ -6,7 +6,7 @@ params: [context: {String: Any}]
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= context["title"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %> | kex docs</title>
+    <title><%= context["title"].or("") %> | kex docs</title>
     <meta name="description" content="<%= context["description"].or("") %>">
     <%== context["favicon"].or("") %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,24 +23,16 @@ params: [context: {String: Any}]
         <nav class="top-nav" aria-label="Collections"><marqraft-content source="navigation" scope="collections"></marqraft-content></nav>
         <span class="spacer"></span>
         <button class="search-trigger" id="search" type="button" aria-label="Search documentation" data-index="<%= context["searchIndex"].or("") %>" data-versions="<%= context["settings"].try["versionsIndex"].or("") %>"><span>Search</span><kbd>/</kbd></button>
-        <span class="pkg-badge"><%= context["collectionTitle"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %></span>
+        <span class="pkg-badge"><%= context["settings"].try["version"].or("") %></span>
         <nav class="top-links" aria-label="Links"><marqraft-content source="menu" menu="header"></marqraft-content></nav>
       </div>
     </header>
-    <div class="wrap layout">
-      <aside class="side">
-        <nav aria-label="<%= context["collectionTitle"].or("") %>">
-          <p class="side-heading"><a href="<%= context["collectionPath"].or("/") %>"><%= context["collectionTitle"].or("") %></a></p>
-          <div class="side-tree"><marqraft-content source="navigation" scope="collection"></marqraft-content></div>
-        </nav>
-      </aside>
+    <div class="wrap layout home">
       <main class="content">
         <article class="prose landing">
           <marqraft-content source="title"></marqraft-content>
           <p class="lede"><%= context["description"].or("") %></p>
           <marqraft-content source="body"></marqraft-content>
-          <h2 class="group">Chapters</h2>
-          <nav class="chapters" aria-label="Chapters"><marqraft-content source="navigation" scope="collection"></marqraft-content></nav>
         </article>
       </main>
     </div>

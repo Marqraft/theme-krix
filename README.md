@@ -39,7 +39,9 @@ Tutorial       /tutorial/
 ```
 
 The header lists the collections; the sidebar, breadcrumbs, version badge and
-previous/next links follow the collection of the current page. In `marq dev`,
+previous/next links follow the collection of the current page. The home page
+(`/`) belongs to no collection: give it the `home` template, which drops the
+sidebar and the chapter list and shows the site-wide version. In `marq dev`,
 **+** in the header creates a collection, and **New page** in the sidebar
 adds a page to the current one. Collection order is changed from a
 collection's menu in the header; page order by dragging in the sidebar.

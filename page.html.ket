@@ -13,6 +13,7 @@ params: [context: {String: Any}]
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Plus+Jakarta+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style><%== context["css"].or("") %></style>
+    <script src="<%= context["assetsUrl"].or("/_theme/") %>search.js" defer></script>
   </head>
   <body>
     <header class="top">
@@ -21,6 +22,7 @@ params: [context: {String: Any}]
         <span class="brand-sub"><%= context["settings"].try["brandSub"].or("docs") %></span>
         <nav class="top-nav" aria-label="Collections"><marqraft-content source="navigation" scope="collections"></marqraft-content></nav>
         <span class="spacer"></span>
+        <button class="search-trigger" id="search" type="button" aria-label="Search documentation" data-index="<%= context["searchIndex"].or("") %>" data-versions="<%= context["settings"].try["versionsIndex"].or("") %>"><span>Search</span><kbd>/</kbd></button>
         <span class="pkg-badge"><%= context["collectionTitle"].or("") %> <%= context["page"].try["version"].or(context["settings"].try["version"].or("")) %></span>
         <nav class="top-links" aria-label="Links"><marqraft-content source="menu" menu="header"></marqraft-content></nav>
       </div>
