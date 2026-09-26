@@ -97,6 +97,10 @@
             "kex",
             "shell",
             "text",
+            "rust",
+            "erlang",
+            "ruby",
+            "haskell",
             "json",
             "html",
             "css",
@@ -132,7 +136,7 @@
   "commands": [
     {
       "id": "code",
-      "label": "Kex code",
+      "label": "Code",
       "aliases": [
         "snippet",
         "kex"
