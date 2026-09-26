@@ -136,7 +136,7 @@
   "commands": [
     {
       "id": "code",
-      "label": "Kex code",
+      "label": "Code",
       "aliases": [
         "snippet",
         "kex"

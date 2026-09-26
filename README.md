@@ -94,7 +94,7 @@ IO.printLine("hello")
 ````
 
 Kex, Rust, Erlang, Ruby, Haskell, shell, JSON, HTML, CSS and JavaScript are
-highlighted at build time. "Kex code" in the slash menu inserts a Kex fence.
+highlighted at build time. "Code" in the slash menu inserts a fence, in Kex unless another language is picked.
 
 ## Settings
 
@@ -111,7 +111,7 @@ The site title (`title` in `marqraft.jsonc`) is the brand, e.g. `kex`.
 
 ## Blocks
 
-- **Kex code** (`/code`): `<marqraft-code language="kex" filename="…" caption="…">`
+- **Code** (`/code`): a Markdown fence, `` ```kex filename="…" caption="…" ``; the filename and caption are optional
 - **Tabs** (`/tabs`): repeatable areas
 - **Callouts** are GitHub alerts in plain Markdown (`/callout` inserts one), so the
   files read the same on GitHub:
