@@ -31,7 +31,7 @@ params: [context: {String: Any}]
       <main class="content">
         <article class="prose landing">
           <marqraft-content source="title"></marqraft-content>
-          <p class="lede"><%= context["description"].or("") %></p>
+          <p class="lede"><marqraft-content source="description"></marqraft-content></p>
           <marqraft-content source="body"></marqraft-content>
         </article>
       </main>
