@@ -80,8 +80,21 @@ uploaded images in `public/assets/images/`. A site can override both in
 | `landing` (Collection) | a collection's index: sidebar, title, description as the lede, body, list of its pages |
 
 Page frontmatter `description` becomes the `<meta name="description">` and the
-index lede. Kex fences (```` ```kex ````) and Code blocks with language `kex` are
-highlighted at build time; the published site carries no JavaScript.
+index lede, which can be edited in place.
+
+Code is a Markdown fence, drawn as a window like kex.run's: three dots, the
+filename (or the language) and a Copy button, over the code, with an optional
+caption below. The filename and caption follow the language on the fence line,
+where GitHub ignores them:
+
+````markdown
+```kex filename="hello.kex" caption="Prints a greeting."
+IO.printLine("hello")
+```
+````
+
+Kex, Rust, Erlang, Ruby, Haskell, shell, JSON, HTML, CSS and JavaScript are
+highlighted at build time. "Kex code" in the slash menu inserts a Kex fence.
 
 ## Settings
 

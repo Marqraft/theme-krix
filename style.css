@@ -848,11 +848,32 @@ h1 .tag-prelude { font-size: 11px; vertical-align: 0.45em; }
 }
 
 /* Blocks. */
+/* A Code block is a window, as on kex.run: a bar with three dots, the
+   filename (or the language) and a Copy button, over the code, with an
+   optional caption under the window. */
 .marq-code { margin: 0 0 1.1rem; }
-.marq-code figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--faint); margin-bottom: 0.35rem; }
-.marq-code figcaption:empty, .marq-code small:empty { display: none; }
-.marq-code pre { margin-bottom: 0.35rem; }
-.marq-code small { display: block; font-size: 12.5px; color: var(--muted); }
+.marq-code > .marq-code-bar + pre.code,
+.marq-code > .marq-code-bar + pre { margin: 0; border-top: 0; border-radius: 0 0 10px 10px; }
+.marq-code-bar {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--code-bg-soft);
+  border: 1px solid var(--code-border); border-bottom-color: color-mix(in srgb, var(--code-border) 70%, transparent);
+  border-radius: 10px 10px 0 0;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.4;
+}
+.marq-code-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.marq-code-dots i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+.marq-code-dots i:nth-child(2) { background: #febc2e; }
+.marq-code-dots i:nth-child(3) { background: #28c840; }
+.marq-code-file { color: #b8ab8e; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.marq-code-language { color: #7d7159; text-transform: lowercase; }
+.marq-code-copy {
+  margin-left: auto; padding: 0.15rem 0.5rem; border: 0; border-radius: 6px;
+  background: transparent; color: #94876a; font: inherit; font-size: 11px; cursor: pointer;
+}
+.marq-code-copy:hover { background: rgba(255, 255, 255, 0.06); color: #e9e0cf; }
+.marq-code figcaption { margin-top: 0.45rem; font-size: 12.5px; color: var(--muted); text-align: center; }
 .marq-tabs { border: 1px solid var(--line); border-radius: 10px; padding: 0.4rem 1.1rem; margin: 0 0 1.1rem; background: rgba(255, 255, 255, 0.35); }
 .marq-area + .marq-area { border-top: 1px solid var(--line); }
 .marq-area h3 { margin: 0.8rem 0 0.4rem; font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint); }
