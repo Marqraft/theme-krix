@@ -112,6 +112,7 @@ The site title (`title` in `marqraft.jsonc`) is the brand, e.g. `kex`.
 ## Blocks
 
 - **Code** (`/code`): a Markdown fence, `` ```kex filename="…" caption="…" ``; the filename and caption are optional
+- **Output**: use `<marqraft-code language="output" filename="Output">…</marqraft-code>` for a plain transcript panel
 - **Tabs** (`/tabs`): repeatable areas
 - **Callouts** are GitHub alerts in plain Markdown (`/callout` inserts one), so the
   files read the same on GitHub:
