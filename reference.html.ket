@@ -14,6 +14,7 @@ params: [context: {String: Any}]
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Plus+Jakarta+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style><%== context["css"].or("") %></style>
     <script src="<%= context["assetsUrl"].or("/_theme/") %>search.js" defer></script>
+    <script src="<%= context["assetsUrl"].or("/_theme/") %>reference.js" defer></script>
   </head>
   <body class="reference">
     <header class="top">
@@ -30,7 +31,6 @@ params: [context: {String: Any}]
     <div class="wrap layout has-toc">
       <aside class="side">
         <nav aria-label="<%= context["collectionTitle"].or("") %>">
-          <p class="side-heading"><a href="<%= context["collectionPath"].or("/") %>"><%= context["collectionTitle"].or("") %></a></p>
           <div class="side-tree"><marqraft-content source="navigation" scope="collection"></marqraft-content></div>
         </nav>
       </aside>
