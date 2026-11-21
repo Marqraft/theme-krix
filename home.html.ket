@@ -8,6 +8,31 @@ params: [context: {String: Any}]
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= context["title"].or("") %> | <%= context["siteTitle"].or("kex") %> <%= context["settings"].try["brandSub"].or("docs") %></title>
     <meta name="description" content="<%= context["description"].or("") %>">
+    <% let siteUrl = "${context["settings"].try["siteUrl"].or("")}" %>
+    <% let base = siteUrl.endsWith?("/") then siteUrl.take(siteUrl.count - 1) else siteUrl %>
+    <% let image = "${context["settings"].try["socialImage"].or("")}" %>
+    <% let imageUrl = image.startsWith?("http") then image else base + image %>
+    <% let description = "${context["description"].or("")}" %>
+    <% if base != "" %>
+    <link rel="canonical" href="<%= base %><%= context["path"].or("/") %>">
+    <meta property="og:url" content="<%= base %><%= context["path"].or("/") %>">
+    <% end %>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<%= context["siteTitle"].or("kex") %> <%= context["settings"].try["brandSub"].or("docs") %>">
+    <meta property="og:title" content="<%= context["title"].or("") %>">
+    <meta name="twitter:title" content="<%= context["title"].or("") %>">
+    <% if description != "" %>
+    <meta property="og:description" content="<%= description %>">
+    <meta name="twitter:description" content="<%= description %>">
+    <% end %>
+    <% if image != "" && (base != "" || image.startsWith?("http")) %>
+    <meta property="og:image" content="<%= imageUrl %>">
+    <meta name="twitter:image" content="<%= imageUrl %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <% else %>
+    <meta name="twitter:card" content="summary">
+    <% end %>
+    <meta name="theme-color" content="#fcf5e2">
     <%== context["favicon"].or("") %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +62,7 @@ params: [context: {String: Any}]
       </main>
     </div>
     <footer class="foot">
-      <div class="wrap">Built with Marqraft · <a href="<%= context["settings"].try["homeUrl"].or("https://kex.run/docs") %>"><%= context["settings"].try["homeLabel"].or("kex.run") %></a></div>
+      <div class="wrap">Built with Marqraft · <a href="<%= context["settings"].try["homeUrl"].or("https://kex.run/docs") %>"><%= context["settings"].try["homeLabel"].or("kex.run") %></a><nav class="foot-links" aria-label="More"><marqraft-content source="menu" menu="footer"></marqraft-content></nav></div>
     </footer>
   </body>
 </html>

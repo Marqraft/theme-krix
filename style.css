@@ -906,6 +906,8 @@ h1 .tag-prelude { font-size: 11px; vertical-align: 0.45em; }
 
 .foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
 .foot a:hover { color: var(--accent-strong); }
+.foot-links, .foot-links .marq-menu, .foot-links li { display: inline; margin: 0; padding: 0; }
+.foot-links li::before { content: " · "; }
 
 /* ── Responsive ─────────────────────────────────────────────────────── */
 

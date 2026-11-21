@@ -20,6 +20,20 @@
           "url": "https://kex.run/docs"
         }
       ]
+    },
+    {
+      "id": "footer",
+      "label": "Footer",
+      "default": [
+        {
+          "label": "Errors & warnings",
+          "url": "https://oops.kex.run"
+        },
+        {
+          "label": "Report a bug",
+          "url": "https://github.com/kexhq/kex/issues/new"
+        }
+      ]
     }
   ],
   "pageTemplates": [
@@ -77,6 +91,18 @@
     {
       "name": "logo",
       "label": "Logo",
+      "type": "image",
+      "default": ""
+    },
+    {
+      "name": "siteUrl",
+      "label": "Site URL (for canonical and share links)",
+      "type": "text",
+      "default": ""
+    },
+    {
+      "name": "socialImage",
+      "label": "Share image (1200×630)",
       "type": "image",
       "default": ""
     }
