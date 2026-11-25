@@ -1,16 +1,21 @@
 ---
 params: [context: {String: Any}]
 ---
+<%# The theme's settings: an `Any` until a type pattern narrows it. %>
+<% let settings = match context["settings"].or({}) do
+  values: {String: Any} => values
+  _ => {}
+end %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= context["title"].or("") %> | <%= context["collectionTitle"].or("") %><% if context["version"].or("") != "" %> <%= context["version"].or("") %><% end %> | <%= context["siteTitle"].or("kex") %> <%= context["settings"].try["brandSub"].or("docs") %></title>
+    <title><%= context["title"].or("") %> | <%= context["collectionTitle"].or("") %><% if context["version"].or("") != "" %> <%= context["version"].or("") %><% end %> | <%= context["siteTitle"].or("kex") %> <%= settings["brandSub"].or("docs") %></title>
     <meta name="description" content="<%= context["description"].or("") %>">
-    <% let siteUrl = "${context["settings"].try["siteUrl"].or("")}" %>
+    <% let siteUrl = "${settings["siteUrl"].or("")}" %>
     <% let base = siteUrl.endsWith?("/") then siteUrl.take(siteUrl.count - 1) else siteUrl %>
-    <% let image = "${context["settings"].try["socialImage"].or("")}" %>
+    <% let image = "${settings["socialImage"].or("")}" %>
     <% let imageUrl = image.startsWith?("http") then image else base + image %>
     <% let description = "${context["description"].or("")}" %>
     <% if base != "" %>
@@ -18,7 +23,7 @@ params: [context: {String: Any}]
     <meta property="og:url" content="<%= base %><%= context["path"].or("/") %>">
     <% end %>
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="<%= context["siteTitle"].or("kex") %> <%= context["settings"].try["brandSub"].or("docs") %>">
+    <meta property="og:site_name" content="<%= context["siteTitle"].or("kex") %> <%= settings["brandSub"].or("docs") %>">
     <meta property="og:title" content="<%= context["title"].or("") %>">
     <meta name="twitter:title" content="<%= context["title"].or("") %>">
     <% if description != "" %>
@@ -44,7 +49,7 @@ params: [context: {String: Any}]
     <header class="top">
       <div class="wrap top-inner">
         <a class="brand" href="/"><%== context["logo"].or("") %><%= context["siteTitle"].or("kex") %></a>
-        <span class="brand-sub"><%= context["settings"].try["brandSub"].or("docs") %></span>
+        <span class="brand-sub"><%= settings["brandSub"].or("docs") %></span>
         <nav class="top-nav" aria-label="Collections"><marqraft-content source="navigation" scope="collections"></marqraft-content></nav>
         <span class="spacer"></span>
         <button class="search-trigger" id="search" type="button" aria-label="Search documentation" data-index="<%= context["searchIndex"].or("") %>"><span>Search</span><kbd>/</kbd></button>
@@ -69,7 +74,7 @@ params: [context: {String: Any}]
       </main>
     </div>
     <footer class="foot">
-      <div class="wrap">Built with Marqraft · <a href="<%= context["settings"].try["homeUrl"].or("https://kex.run/docs") %>"><%= context["settings"].try["homeLabel"].or("kex.run") %></a><nav class="foot-links" aria-label="More"><marqraft-content source="menu" menu="footer"></marqraft-content></nav></div>
+      <div class="wrap">Built with Marqraft · <a href="<%= settings["homeUrl"].or("https://kex.run/docs") %>"><%= settings["homeLabel"].or("kex.run") %></a><nav class="foot-links" aria-label="More"><marqraft-content source="menu" menu="footer"></marqraft-content></nav></div>
     </footer>
   </body>
 </html>
